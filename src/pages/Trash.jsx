@@ -9,10 +9,7 @@ const Trash = () => {
       <h2>Trash</h2>
       <div>
         {state.trashMails.map((mail) => (
-          <>
-            <MailCard key={mail.mId} email={mail} />
-            <hr />
-          </>
+            <MailCard key={mail.mId} email={mail} isAddedToTrash/>
         ))}
       </div>
     </>

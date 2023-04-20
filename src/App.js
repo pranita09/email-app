@@ -9,6 +9,7 @@ import IndividualEmail from "./pages/IndividualEmail";
 export default function App() {
   return (
     <div className="App">
+    <h1>tanaypratap's mail box</h1>
       <Header />
       <Routes>
         <Route path="/" element={<Inbox />} />

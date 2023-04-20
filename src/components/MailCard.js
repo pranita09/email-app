@@ -1,12 +1,13 @@
 import { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { MailContext } from "..";
 
-const MailCard = ({ email, individualPage }) => {
+const MailCard = ({ email, individualPage, isSpamAdded, clicked }) => {
   const { dispatch } = useContext(MailContext);
   const { mId, unread, isStarred, subject, content, isSpam } = email;
+  const navigate = useNavigate();
   return (
-    <div>
+    <div key={mId}>
       <div>
         <h4>Subject: {subject}</h4>
         <button
@@ -25,7 +26,12 @@ const MailCard = ({ email, individualPage }) => {
       )}
       <div>
         <button
-          onClick={() => dispatch({ type: "delete_mail", payload: email })}
+          onClick={() => {
+            dispatch({ type: "delete_mail", payload: email} );
+            console.log(clicked);
+            clicked ? navigate('/'): '';
+            }
+            }
         >
           Delete
         </button>
@@ -36,11 +42,11 @@ const MailCard = ({ email, individualPage }) => {
         >
           Mark as {unread ? "Read" : "Unread"}
         </button>
-        <button
+        { !isSpamAdded && (<button
           onClick={() => dispatch({ type: "report_spam", payload: email })}
         >
           {isSpam ? "Spam reported" : "Report spam"}
-        </button>
+        </button>)}
       </div>
     </div>
   );

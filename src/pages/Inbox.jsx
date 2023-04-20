@@ -56,10 +56,7 @@ const Inbox = () => {
       <h3>Star: {starredMailsCount}</h3>
       <div>
         {processedData.map((email) => (
-          <>
-            <MailCard key={email.mId} email={email} />
-            <hr />
-          </>
+            <MailCard key={email.mId} email={email} clicked={false} />
         ))}
       </div>
     </>

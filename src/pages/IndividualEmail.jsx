@@ -13,7 +13,7 @@ const IndividualEmail = () => {
   return (
     <>
       <h2>Individual Email</h2>
-      <MailCard email={emailToOpen} individualPage />
+      <MailCard email={emailToOpen} individualPage clicked={true} />
     </>
   );
 };
