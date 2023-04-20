@@ -1,2 +1,2 @@
 # email-app
-Created with CodeSandbox
+An email app having pages like inbox, spam, trash.
