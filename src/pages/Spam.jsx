@@ -8,7 +8,7 @@ const Spam = () => {
     <>
       <h2>Spam</h2>
       {state.spamMails.map((email) => (
-          <MailCard key={email.mId} email={email} isAddedToSpam/>
+          <MailCard key={email.mId} email={email} isAddedToSpam />
       ))}
     </>
   );

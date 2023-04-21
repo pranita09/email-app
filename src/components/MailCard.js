@@ -1,22 +1,16 @@
 import { useContext } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { MailContext } from "..";
+import Buttons from "./Buttons";
 
-const MailCard = ({ email, individualPage, isSpamAdded, clicked }) => {
+const MailCard = ({ email, individualPage, isAddedToSpam, isAddedToTrash, clicked }) => {
   const { dispatch } = useContext(MailContext);
   const { mId, unread, isStarred, subject, content, isSpam } = email;
-  const navigate = useNavigate();
   return (
     <div key={mId}>
       <div>
         <h4>Subject: {subject}</h4>
-        <button
-          onClick={() =>
-            dispatch({ type: "star_unstar_toggle", payload: email })
-          }
-        >
-          {isStarred ? "Unstar" : "Star"}
-        </button>
+        
       </div>
       <p>{content}</p>
       {!individualPage && (
@@ -24,30 +18,7 @@ const MailCard = ({ email, individualPage, isSpamAdded, clicked }) => {
           <NavLink to={`/email/${mId}`}>View Details</NavLink>
         </small>
       )}
-      <div>
-        <button
-          onClick={() => {
-            dispatch({ type: "delete_mail", payload: email} );
-            console.log(clicked);
-            clicked ? navigate('/'): '';
-            }
-            }
-        >
-          Delete
-        </button>
-        <button
-          onClick={() =>
-            dispatch({ type: "read_unread_toggle", payload: email })
-          }
-        >
-          Mark as {unread ? "Read" : "Unread"}
-        </button>
-        { !isSpamAdded && (<button
-          onClick={() => dispatch({ type: "report_spam", payload: email })}
-        >
-          {isSpam ? "Spam reported" : "Report spam"}
-        </button>)}
-      </div>
+      { !isAddedToSpam  &&  <Buttons email={email} isStarred={isStarred} clicked={clicked} unread={unread} isSpam={isSpam} />}
     </div>
   );
 };
