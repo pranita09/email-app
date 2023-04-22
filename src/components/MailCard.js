@@ -9,8 +9,7 @@ const MailCard = ({ email, individualPage, isAddedToSpam, isAddedToTrash, clicke
   return (
     <div key={mId}>
       <div>
-        <h4>Subject: {subject}</h4>
-        
+        <h4>Subject: {subject}</h4>  
       </div>
       <p>{content}</p>
       {!individualPage && (
