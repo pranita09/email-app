@@ -28,7 +28,7 @@ const mailReducer = (state, action) => {
         spamMails: [...state.spamMails, action.payload],
         mailsData: state.mailsData.filter((email) =>
           email.mId === action.payload.mId
-            ? { ...email, isSpam: (email.isSpam = true) }
+            ? { ...email, isSpam: (true) }
             : email
         )
       };
