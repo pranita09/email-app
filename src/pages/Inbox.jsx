@@ -4,7 +4,6 @@ import { useMails } from "../contexts/MailContext";
 const Inbox = () =>{
 
   const {filteredStarredMails, dispatch} = useMails();
-  console.log(filteredStarredMails);
 
   return(
     <>

@@ -6,7 +6,6 @@ export const MailContext = createContext();
 const mailReducer = (state, action) =>{
   switch(action.type){
     case 'unread_filter':
-      console.log(state.unreadMails);
       return {...state, unreadMails: !state.unreadMails};
     case 'star_filter':
       return { ...state, starredMails: !state.starredMails };
