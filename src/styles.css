@@ -1,4 +1,9 @@
 .App {
   font-family: sans-serif;
-  text-align: center;
+  /* text-align: center; */
+}
+.mailcard{
+  border: 1px solid;
+  padding: 8px;
+  margin: 5px;
 }

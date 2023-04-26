@@ -1,7 +1,7 @@
 const Buttons = () =>{
   return (
     <>
-      <h3>button</h3>
+      
     </>
   )
 }
