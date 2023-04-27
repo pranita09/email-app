@@ -11,6 +11,8 @@ const mailReducer = (state, action) =>{
       return { ...state, starredMails: !state.starredMails };
     case 'star_toggle':
       return {...state, mails: state.mails.map((mail)=> mail.mId === action.payload ? {...mail, isStarred: !mail.isStarred} : mail)}
+    case 'unread_toggle':
+      return { ...state, mails: state.mails.map((mail)=> mail.mId === action.payload ? {...mail, unread: !mail.unread} : mail)}
     default:
       return state;
   }
