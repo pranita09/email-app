@@ -9,6 +9,8 @@ const mailReducer = (state, action) =>{
       return {...state, unreadMails: !state.unreadMails};
     case 'star_filter':
       return { ...state, starredMails: !state.starredMails };
+    case 'star_toggle':
+      return {...state, mails: state.mails.map((mail)=> mail.mId === action.payload ? {...mail, isStarred: !mail.isStarred} : mail)}
     default:
       return state;
   }
@@ -16,24 +18,12 @@ const mailReducer = (state, action) =>{
 
 export const MailProvider = ({children}) =>{
 
-  const [state, dispatch] = useReducer(mailReducer, {mails: mails, unreadMails: false, starredMails: false})
+  const [state, dispatch] = useReducer(mailReducer, {mails: mails, trashedMails: [], unreadMails: false, starredMails: false})
 
-  const mailsData = [...mails];
-  let filteredUnreadMails;
-  let filteredStarredMails;
+  const filteredUnreadMails = state.unreadMails ? state.mails.filter(({unread})=> unread) : state.mails; 
 
-  if(state.unreadMails){
-    filteredUnreadMails = mailsData.filter(({unread})=> unread);
-  }else{
-    filteredUnreadMails = mailsData;
-  }
-  if(state.starredMails){
-    filteredStarredMails = filteredUnreadMails.filter(({isStarred})=> isStarred)
-  }else{
-    filteredStarredMails = filteredUnreadMails;
-  }
+  const filteredStarredMails = state.starredMails ? filteredUnreadMails.filter(({isStarred})=> isStarred) : filteredUnreadMails;
  
-
   return(
     <MailContext.Provider value={{ filteredStarredMails, state, dispatch }}>
       {children}
