@@ -3,9 +3,15 @@ import { useMails } from "../contexts/MailContext";
 
 const IndividualMail = () => {
   const { emailmId } = useParams();
-  const { state } = useMails();
+  const {
+    state: { mails, trashedMails, spamedMails },
+  } = useMails();
 
-  const selectedMail = state.mails.find((mail) => mail.mId === emailmId);
+  const mainMail = mails.find((mail) => mail.mId === emailmId);
+  const trashMail = trashedMails.find((mail) => mail.mId === emailmId);
+  const spamMail = spamedMails.find((mail) => mail.mId === emailmId);
+
+  const selectedMail = mainMail ?? spamMail ?? trashMail;
 
   return (
     <>
