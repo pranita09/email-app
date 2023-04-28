@@ -11,7 +11,7 @@ const MailCard = ({mail, trashAdded, spamAdded}) =>{
     <div className='mailcard'>
       <h3>Subject: {subject}</h3>
       <p>{content}</p>
-      <p><NavLink>View details</NavLink></p>
+      <p><NavLink to={`/email/${mId}`}>View details</NavLink></p>
       {(!trashAdded && !spamAdded )&& <Buttons mail={mail} />}
     </div>
   )

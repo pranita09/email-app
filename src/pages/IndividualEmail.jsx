@@ -1,8 +1,19 @@
+import { useParams } from "react-router-dom";
+import { useMails } from "../contexts/MailContext";
 
 const IndividualMail = () =>{
+
+  const {emailmId} = useParams();
+  const {state} = useMails();
+
+  const selectedMail = state.mails.find((mail) => mail.mId === emailmId);
+
   return(
     <>
-      <h2>Individual Mail</h2>
+      <div className='mailcard'>
+        <h3>Subject: {selectedMail.subject}</h3>
+        <p>{selectedMail.content}</p>
+      </div>
     </>
   )
 }
