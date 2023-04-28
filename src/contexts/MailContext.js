@@ -13,6 +13,10 @@ const mailReducer = (state, action) =>{
       return {...state, mails: state.mails.map((mail)=> mail.mId === action.payload ? {...mail, isStarred: !mail.isStarred} : mail)}
     case 'unread_toggle':
       return { ...state, mails: state.mails.map((mail)=> mail.mId === action.payload ? {...mail, unread: !mail.unread} : mail)}
+    case 'delete':
+      return { ...state, trashedMails: [...state.trashedMails, action.payload], mails: state.mails.filter((mail)=> mail.mId !== action.payload.mId)}
+    case 'spam':
+      return {...state, spamedMails: [...state.spamedMails, action.payload], mails: state.mails.filter((email)=> email.mId !== action.payload.mId)}
     default:
       return state;
   }
@@ -20,7 +24,7 @@ const mailReducer = (state, action) =>{
 
 export const MailProvider = ({children}) =>{
 
-  const [state, dispatch] = useReducer(mailReducer, {mails: mails, trashedMails: [], unreadMails: false, starredMails: false})
+  const [state, dispatch] = useReducer(mailReducer, {mails: mails, trashedMails: [], spamedMails: [], unreadMails: false, starredMails: false})
 
   const filteredUnreadMails = state.unreadMails ? state.mails.filter(({unread})=> unread) : state.mails; 
 

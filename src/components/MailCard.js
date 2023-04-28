@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import Buttons from "./Buttons";
 import { useMails } from "../contexts/MailContext";
 
-const MailCard = ({mail}) =>{
+const MailCard = ({mail, trashAdded, spamAdded}) =>{
 
   const {state, dispatch} = useMails();
   const {mId, unread, isStarred, subject, content} = mail;
@@ -12,7 +12,7 @@ const MailCard = ({mail}) =>{
       <h3>Subject: {subject}</h3>
       <p>{content}</p>
       <p><NavLink>View details</NavLink></p>
-      <Buttons {...mail} />
+      {(!trashAdded && !spamAdded )&& <Buttons mail={mail} />}
     </div>
   )
 }
