@@ -10,7 +10,7 @@ export default function App() {
   return (
     <div className="App">
     <h1 className="header">pranita's mail box</h1>
-    <div>
+    <div className="content">
     <Header />
       <Routes>
         <Route path="/" element={<Inbox />} />
