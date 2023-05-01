@@ -5,8 +5,7 @@ const Trash = () => {
   const { state } = useMails();
 
   return (
-    <>
-      <h2>Trash</h2>
+    <div className="routes">
       {state.trashedMails.length > 0 ? (
         state.trashedMails.map((mail) => {
           return <MailCard key={mail.mId} mail={mail} trashAdded />;
@@ -14,7 +13,7 @@ const Trash = () => {
       ) : (
         <h3>Trash is empty!</h3>
       )}
-    </>
+    </div>
   );
 };
 

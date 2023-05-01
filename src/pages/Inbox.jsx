@@ -7,8 +7,7 @@ const Inbox = () => {
   const totalUnreadMails = filteredStarredMails.reduce((acc, {unread})=> unread ? acc+1 : acc, 0);
 
   return (
-    <>
-      <h2>Inbox</h2>
+    <div className="routes">
       <fieldset>
         <legend>Filters</legend>
         <label>
@@ -32,7 +31,7 @@ const Inbox = () => {
           <MailCard key={mail.mId} mail={mail} />
         ))}
       </ul>
-    </>
+    </div>
   );
 };
 

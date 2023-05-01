@@ -9,14 +9,16 @@ import IndividualEmail from "./pages/IndividualEmail";
 export default function App() {
   return (
     <div className="App">
-    <h1>tanaypratap's mail box</h1>
-      <Header />
+    <h1 className="header">pranita's mail box</h1>
+    <div>
+    <Header />
       <Routes>
         <Route path="/" element={<Inbox />} />
         <Route path="/spam" element={<Spam />} />
         <Route path="/trash" element={<Trash />} />
         <Route path="/email/:emailmId" element={<IndividualEmail />} />
       </Routes>
+    </div> 
     </div>
   );
 }

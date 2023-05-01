@@ -1,19 +1,43 @@
 import { NavLink } from "react-router-dom";
-import Buttons from "./Buttons";
 import { useMails } from "../contexts/MailContext";
 
 const MailCard = ({ mail, trashAdded, spamAdded }) => {
-  const { mId, unread, isStarred, subject, content } = mail;
-
+  const { mId, unread, isStarred, subject, content, isSpam } = mail;
+  const {dispatch} = useMails();
   return (
-    <div className="mailcard">
+    <>
+    <li>
+    <div className="space-between">
       <h3>Subject: {subject}</h3>
+      <span>
+      { !trashAdded && !spamAdded && <button onClick={() => dispatch({ type: "star_toggle", payload: mId })}>
+        {isStarred ? "Unstar" : "Star"}
+      </button> }
+      </span>
+      </div>
       <p>{content}</p>
-      <p>
-        <NavLink to={`/email/${mId}`}>View details</NavLink>
-      </p>
-      {!trashAdded && !spamAdded && <Buttons mail={mail} />}
-    </div>
+      <div className="space-between">
+        <NavLink className='navlink' to={`/email/${mId}`}>View details</NavLink>
+        <div className="end-buttons">
+          {
+            !trashAdded && !spamAdded &&
+            (<>
+              <button style={{color: 'red'}} onClick={() => dispatch({ type: "delete", payload: mail })}>
+              Delete
+              </button>
+              <button style={{ color: "orangered" }} onClick={() => dispatch({ type: "unread_toggle", payload: mId })}>
+                Mark as {unread ? "read" : "unread"}
+              </button>
+              <button style={{ color: "green" }} onClick={() => dispatch({ type: "spam", payload: mail })}>
+                {isSpam ? "Spam reported" : "Report spam"}
+              </button>
+            </>
+            )
+          }
+        </div>
+      </div>
+    </li>
+    </>
   );
 };
 

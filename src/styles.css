@@ -1,9 +1,88 @@
 .App {
   font-family: sans-serif;
-  /* text-align: center; */
+  text-align: left;
+}
+@media (min-width: 768px){
+  .content{
+    display: flex;
+  }
+  .header-navlink{
+    width: 20%;
+  }
+  .routes{
+    padding: 0 20px 20px;
+  }
+  button{
+    width: fit-content;
+    height: 30px;
+    margin: 0 20px;
+    padding: 0 10px;
+  }
+}
+.header{
+  text-align: center;
+}
+.routes{
+  width: 100%;
+}
+.navlink{
+  margin: 0 2rem;
+  padding-right: 10px;
+  display: flex;
+  height: 60px;
+  text-decoration: none;
+  font-weight: bold;
+  align-items: center;
+}
+ul{
+  list-style: none;
+  padding: 0;
+}
+li{
+  border: 2px solid rgb(188, 187, 187);
+  margin-bottom: 5px;
+  border-radius: 5px;
+  padding: 10px;
+  background: rgb(236, 236, 248);
+  list-style: none;
+}
+li:hover{
+  background: white;
+}
+.space-between{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+}
+.space-between h2{
+  margin: 5px 0 0;
+}
+.detail-navlink,
+.space-between .navlink{
+  margin: 0;
+  height: fit-content;
+  color: black;
+  font-weight: normal;
+  text-decoration: none;
+}
+.end-buttons{
+  display: flex;
+  justify-content: end;
+}
+button{
+  background: rgb(245, 243, 243);
+  border: none;
+  margin: 0 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 10px;
 }
 .mailcard{
-  border: 1px solid;
-  padding: 8px;
-  margin: 5px;
+  border: 2px solid rgb(188, 187, 187);
+  margin-bottom: 5px;
+  border-radius: 5px;
+  padding: 10px;
+  background: rgb(236, 236, 248);
+  list-style: none;
 }

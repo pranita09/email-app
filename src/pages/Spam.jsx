@@ -5,8 +5,7 @@ const Spam = () => {
   const { state } = useMails();
 
   return (
-    <>
-      <h2>Spam</h2>
+    <div className="routes">
       {state.spamedMails.length > 0 ? (
         state.spamedMails.map((mail) => (
           <MailCard key={mail.mId} mail={mail} spamAdded />
@@ -14,7 +13,7 @@ const Spam = () => {
       ) : (
         <h3>Spam is empty!!</h3>
       )}
-    </>
+    </div>
   );
 };
 
