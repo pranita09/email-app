@@ -37,6 +37,18 @@ const mailReducer = (state, action) => {
         spamedMails: [...state.spamedMails, action.payload],
         mails: state.mails.filter((email) => email.mId !== action.payload.mId),
       };
+    case 'TRASH_RESTORE':
+      return {
+        ...state,
+        mails: [...state.mails, action.payload],
+        trashedMails: state.trashedMails.filter((mail)=> mail.mId !== action.payload.mId)
+      }
+    case 'SPAM_RESTORE':
+      return{
+        ...state,
+        mails: [...state.mails, action.payload],
+        spamedMails: state.spamedMails.filter((mail)=> mail.mId !== action.payload.mId)
+      }
     default:
       return state;
   }

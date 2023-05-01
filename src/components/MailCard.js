@@ -34,6 +34,16 @@ const MailCard = ({ mail, trashAdded, spamAdded }) => {
             </>
             )
           }
+          {
+            trashAdded && (
+              <button style={{color: 'green'}} onClick={()=> dispatch({type: 'TRASH_RESTORE', payload: mail})}>Restore</button>
+            )
+          }
+          {
+            spamAdded && (
+              <button style={{color: 'green'}} onClick={()=> dispatch({type: 'SPAM_RESTORE', payload: mail})}>Remove from Spam</button>
+            )
+          }
         </div>
       </div>
     </li>
