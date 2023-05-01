@@ -5,11 +5,11 @@ export const MailContext = createContext();
 
 const mailReducer = (state, action) => {
   switch (action.type) {
-    case "unread_filter":
+    case "UNREAD_FILTER":
       return { ...state, unreadMails: !state.unreadMails };
-    case "star_filter":
+    case "STAR_FILTER":
       return { ...state, starredMails: !state.starredMails };
-    case "star_toggle":
+    case "STAR_TOGGLE":
       return {
         ...state,
         mails: state.mails.map((mail) =>
@@ -18,20 +18,20 @@ const mailReducer = (state, action) => {
             : mail
         ),
       };
-    case "unread_toggle":
+    case "UNREAD_TOGGLE":
       return {
         ...state,
         mails: state.mails.map((mail) =>
           mail.mId === action.payload ? { ...mail, unread: !mail.unread } : mail
         ),
       };
-    case "delete":
+    case "DELETE":
       return {
         ...state,
         trashedMails: [...state.trashedMails, action.payload],
         mails: state.mails.filter((mail) => mail.mId !== action.payload.mId),
       };
-    case "spam":
+    case "SPAM":
       return {
         ...state,
         spamedMails: [...state.spamedMails, action.payload],

@@ -13,14 +13,14 @@ const Inbox = () => {
         <label>
           <input
             type="checkbox"
-            onChange={() => dispatch({ type: "unread_filter" })}
+            onChange={() => dispatch({ type: "UNREAD_FILTER" })}
           />
           Show unread mails
         </label>
         <label>
           <input
             type="checkbox"
-            onChange={() => dispatch({ type: "star_filter" })}
+            onChange={() => dispatch({ type: "STAR_FILTER" })}
           />
           Show starred mails
         </label>

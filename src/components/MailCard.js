@@ -10,7 +10,7 @@ const MailCard = ({ mail, trashAdded, spamAdded }) => {
     <div className="space-between">
       <h3>Subject: {subject}</h3>
       <span>
-      { !trashAdded && !spamAdded && <button onClick={() => dispatch({ type: "star_toggle", payload: mId })}>
+      { !trashAdded && !spamAdded && <button onClick={() => dispatch({ type: "STAR_TOGGLE", payload: mId })}>
         {isStarred ? "Unstar" : "Star"}
       </button> }
       </span>
@@ -22,13 +22,13 @@ const MailCard = ({ mail, trashAdded, spamAdded }) => {
           {
             !trashAdded && !spamAdded &&
             (<>
-              <button style={{color: 'red'}} onClick={() => dispatch({ type: "delete", payload: mail })}>
+              <button style={{color: 'red'}} onClick={() => dispatch({ type: "DELETE", payload: mail })}>
               Delete
               </button>
-              <button style={{ color: "orangered" }} onClick={() => dispatch({ type: "unread_toggle", payload: mId })}>
+              <button style={{ color: "orangered" }} onClick={() => dispatch({ type: "UNREAD_TOGGLE", payload: mId })}>
                 Mark as {unread ? "read" : "unread"}
               </button>
-              <button style={{ color: "green" }} onClick={() => dispatch({ type: "spam", payload: mail })}>
+              <button style={{ color: "green" }} onClick={() => dispatch({ type: "SPAM", payload: mail })}>
                 {isSpam ? "Spam reported" : "Report spam"}
               </button>
             </>
