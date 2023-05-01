@@ -4,7 +4,10 @@ import { useMails } from "../contexts/MailContext";
 const Inbox = () => {
   const { filteredStarredMails, dispatch } = useMails();
 
-  const totalUnreadMails = filteredStarredMails.reduce((acc, {unread})=> unread ? acc+1 : acc, 0);
+  const totalUnreadMails = filteredStarredMails.reduce(
+    (acc, { unread }) => (unread ? acc + 1 : acc),
+    0
+  );
 
   return (
     <div className="routes">
